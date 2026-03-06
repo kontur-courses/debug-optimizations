@@ -1,0 +1,148 @@
+intel core i7 8th gen
+.net 7
+
+ByteArrayEqualityBenchmark
+
+|        Method |          Mean |       Error |      StdDev | Code Size |
+|-------------- |--------------:|------------:|------------:|----------:|
+|          Linq |  1,690.344 us |  33.1663 us |  41.9448 us |     381 B |
+|       Trivial |     42.222 us |   0.5569 us |   0.5209 us |     139 B |
+|      ReadOnly |    765.461 us |  15.3040 us |  27.9842 us |     198 B |
+|    Structural | 11,255.398 us | 206.9327 us | 193.5650 us |     118 B |
+|      Unrolled |     77.867 us |   1.1808 us |   1.1045 us |     889 B |
+|          Long |      5.645 us |   0.0914 us |   0.0855 us |     242 B |
+|          Guid |     13.559 us |   0.2593 us |   0.2547 us |     323 B |
+|          Span |      3.321 us |   0.0208 us |   0.0174 us |     137 B |
+|       Vectors |      4.139 us |   0.0704 us |   0.0659 us |     241 B |
+| SequenceEqual |      3.383 us |   0.0325 us |   0.0304 us |   1,120 B |
+|        Native |      4.599 us |   0.0320 us |   0.0284 us |     292 B |
+
+
+ForVsForeach
+
+|          Method | NumbersCount |      Mean |     Error |    StdDev |    Median | Code Size |
+|---------------- |------------- |----------:|----------:|----------:|----------:|----------:|
+|         ForList |     10000000 |  6.966 ms | 0.1730 ms | 0.4908 ms |  6.753 ms |      73 B |
+|     ForeachList |     10000000 | 12.231 ms | 0.1932 ms | 0.3582 ms | 12.135 ms |      80 B |
+|        ForArray |     10000000 | 12.874 ms | 0.4136 ms | 1.1181 ms | 12.347 ms |      77 B |
+|    ForeachArray |     10000000 |  4.546 ms | 0.0900 ms | 0.1453 ms |  4.485 ms |      33 B |
+|  UnsafeArraySum |     10000000 |  4.820 ms | 0.0937 ms | 0.1150 ms |  4.797 ms |     104 B |
+| UnsafeArraySum2 |     10000000 |  4.464 ms | 0.0761 ms | 0.0935 ms |  4.423 ms |     106 B |
+
+
+MaxBenchmark
+
+|     Method |       Mean |    Error |   StdDev | Code Size |
+|----------- |-----------:|---------:|---------:|----------:|
+|  SimpleMax | 5,665.4 ns | 93.12 ns | 87.10 ns |      50 B |
+|    LinqMax | 1,152.9 ns | 22.33 ns | 22.93 ns |     674 B |
+|    MathMax | 5,611.3 ns | 98.26 ns | 91.91 ns |      61 B |
+| VectorsMax |   845.6 ns | 16.64 ns | 17.09 ns |     283 B |
+
+
+MemoryTraffic
+
+|        Method |        Mean |     Error |     StdDev |       Gen0 |   Gen1 |   Allocated |
+|-------------- |------------:|----------:|-----------:|-----------:|-------:|------------:|
+| StringBuilder |    35.64 us |  0.386 us |   0.361 us |    15.0757 | 1.2207 |    61.72 KB |
+|        String | 5,894.24 us | 79.389 us | 116.368 us | 17898.4375 |      - | 73378.88 KB |
+
+
+NewConstraintBenchmark
+
+|               Method |      Mean |     Error |    StdDev | Code Size |
+|--------------------- |----------:|----------:|----------:|----------:|
+|          OperatorNew |  4.608 ns | 0.1009 ns | 0.1121 ns |      25 B |
+|      DelegateFactory |  5.964 ns | 0.1556 ns | 0.1456 ns |     111 B |
+| NewGenericConstraint | 12.478 ns | 0.3119 ns | 0.5210 ns |      66 B |
+
+
+StructVsClassBenchmark
+
+| Method |       Mean |     Error |    StdDev |
+|------- |-----------:|----------:|----------:|
+|  Class |   3.366 us |  0.4293 us | 0.1906 us |
+| Struct | 204.472 us | 17.6435 us | 6.2918 us |
+V1
+|  Class |  3.185 us | 0.1407 us | 0.0625 us |
+| Struct | 10.802 us | 0.3052 us | 0.1355 us |
+V2
+|  Class | 3,129.0 ns |  9.70 ns |  3.46 ns |
+| Struct |   852.8 ns | 30.08 ns | 13.35 ns |
+V3
+|  Class | 3,221.9 ns | 25.13 ns | 8.96 ns |
+| Struct |   723.6 ns | 15.33 ns | 6.81 ns |
+
+
+
+.net Framework 4.8
+
+ByteArrayEqualityBenchmark
+
+|        Method |          Mean |       Error |      StdDev |        Median | Code Size |
+|-------------- |--------------:|------------:|------------:|--------------:|----------:|
+|          Linq |  2,133.675 us |  42.0787 us |  45.0238 us |  2,138.113 us |     331 B |
+|       Trivial |     60.281 us |   1.0206 us |   0.9547 us |     60.166 us |     115 B |
+|      ReadOnly |    868.992 us |  12.0104 us |  10.0292 us |    864.493 us |     240 B |
+|    Structural | 14,718.189 us | 269.4403 us | 224.9948 us | 14,668.711 us |     130 B |
+|      Unrolled |     79.915 us |   1.6109 us |   4.4099 us |     78.495 us |     497 B |
+|          Long |      7.258 us |   0.1414 us |   0.2362 us |      7.308 us |     265 B |
+|          Guid |     84.095 us |   0.7497 us |   0.6646 us |     83.802 us |     382 B |
+|          Span |      3.322 us |   0.0403 us |   0.0357 us |      3.334 us |     175 B |
+|       Vectors |      8.137 us |   0.1343 us |   0.1256 us |      8.188 us |     286 B |
+| SequenceEqual |  1,256.414 us |  23.8328 us |  22.2932 us |  1,266.258 us |     587 B |
+|        Native |      4.401 us |   0.0880 us |   0.1114 us |      4.431 us |     176 B |
+
+
+ForVsForeach
+
+|          Method | NumbersCount |      Mean |     Error |    StdDev | Code Size |
+|---------------- |------------- |----------:|----------:|----------:|----------:|
+|         ForList |     10000000 |  8.358 ms | 0.1489 ms | 0.1393 ms |     170 B |
+|     ForeachList |     10000000 | 29.767 ms | 0.5572 ms | 0.6193 ms |     171 B |
+|        ForArray |     10000000 |  8.362 ms | 0.1626 ms | 0.1597 ms |     170 B |
+|    ForeachArray |     10000000 |  4.767 ms | 0.0466 ms | 0.0436 ms |      36 B |
+|  UnsafeArraySum |     10000000 |  5.994 ms | 0.0323 ms | 0.0302 ms |     104 B |
+| UnsafeArraySum2 |     10000000 |  5.887 ms | 0.0336 ms | 0.0298 ms |     106 B |
+
+
+MaxBenchmark
+
+|     Method |        Mean |       Error |      StdDev | Code Size |
+|----------- |------------:|------------:|------------:|----------:|
+|  SimpleMax |  8,398.7 ns |   167.59 ns |   250.85 ns |      60 B |
+|    LinqMax | 60,583.7 ns | 1,209.95 ns | 2,119.12 ns |     346 B |
+|    MathMax |  9,766.1 ns |   149.02 ns |   139.39 ns |      49 B |
+| VectorsMax |    836.5 ns |    16.33 ns |    24.45 ns |     288 B |
+
+
+MemoryTraffic
+
+|        Method |        Mean |     Error |    StdDev |       Gen0 |   Gen1 |   Allocated |
+|-------------- |------------:|----------:|----------:|-----------:|-------:|------------:|
+| StringBuilder |    38.16 us |  0.607 us |  0.538 us |    15.0146 | 0.0610 |    61.85 KB |
+|        String | 4,453.41 us | 83.454 us | 78.063 us | 17898.4375 |      - | 73508.29 KB |
+
+
+NewConstraintBenchmark
+
+|               Method |      Mean |     Error |    StdDev | Code Size |
+|--------------------- |----------:|----------:|----------:|----------:|
+|          OperatorNew |  2.210 ns | 0.0901 ns | 0.0926 ns |      25 B |
+|      DelegateFactory |  4.961 ns | 0.1443 ns | 0.1772 ns |     228 B |
+| NewGenericConstraint | 50.651 ns | 0.2309 ns | 0.2047 ns |      74 B |
+
+
+StructVsClassBenchmark
+
+| Method |      Mean |     Error |   StdDev |
+|------- |----------:|----------:|---------:|
+|  Class |  10.32 us |  0.107 us | 0.047 us |
+| Struct | 222.53 us | 12.499 us | 5.549 us |
+V1
+|  Class |  9.403 us | 0.3739 us | 0.1333 us |
+| Struct | 14.978 us | 0.1735 us | 0.0770 us |
+V2
+|  Class | 9.661 us | 0.4944 us | 0.2195 us |
+| Struct | 1.394 us | 0.0616 us | 0.0274 us |
+

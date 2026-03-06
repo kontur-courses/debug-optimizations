@@ -1,0 +1,48 @@
+intel core i7 8th gen
+.net 7
+
+|           Method |      Mean |    Error |   StdDev |     Gen0 |     Gen1 |     Gen2 |   Allocated |
+|----------------- |----------:|---------:|---------:|---------:|---------:|---------:|------------:|
+|   DivideByNumber | 104.67 ms | 3.254 ms | 0.504 ms |        - |        - |        - | 208000144 B |
+|       SumModules |  32.56 ms | 0.402 ms | 0.062 ms |        - |        - |        - |        38 B |
+| DivideByNumberV2 |  63.38 ms | 0.872 ms | 0.227 ms | 125.0000 | 125.0000 | 125.0000 | 208000141 B |
+|     SumModulesV2 |  22.72 ms | 0.882 ms | 0.229 ms |        - |        - |        - |        19 B |
+
+
+|                                        Method |    Mean |    Error |   StdDev | Allocated |
+|---------------------------------------------- |--------:|---------:|---------:|----------:|
+|                       EdgePreservingSmoothing | 4.282 s | 0.1055 s | 0.0274 s |  34.33 MB |
+|            EdgePreservingSmoothingWithFastPow | 1.371 s | 0.0375 s | 0.0058 s |  34.33 MB |
+| EdgePreservingSmoothingWithFastPowAndInlining | 1.234 s | 0.0253 s | 0.0066 s |  34.33 MB |
+
+
+|              Method |     Mean |    Error |   StdDev |        Gen0 |       Gen1 |      Gen2 |  Allocated |
+|-------------------- |---------:|---------:|---------:|------------:|-----------:|----------:|-----------:|
+|           MeanShift | 11.306 s | 4.4043 s | 0.2414 s | 619000.0000 | 90000.0000 | 7000.0000 | 3055.58 MB |
+| MeanShiftWithBuffer |  9.052 s | 6.1807 s | 0.3388 s |  97000.0000 | 51000.0000 | 6000.0000 |   675.2 MB |
+|  MeanShiftWithCache |  1.616 s | 0.1081 s | 0.0059 s |           - |          - |         - |  308.99 MB |
+
+
+
+.net Framework 4.8
+
+|           Method |      Mean |    Error |   StdDev |   Allocated |
+|----------------- |----------:|---------:|---------:|------------:|
+|   DivideByNumber | 130.28 ms | 4.017 ms | 0.622 ms | 208002072 B |
+|       SumModules |  93.51 ms | 1.857 ms | 0.482 ms |           - |
+| DivideByNumberV2 | 105.79 ms | 2.664 ms | 0.692 ms | 208001662 B |
+|     SumModulesV2 |  20.46 ms | 0.327 ms | 0.051 ms |           - |
+
+
+|                                        Method |    Mean |    Error |   StdDev | Allocated |
+|---------------------------------------------- |--------:|---------:|---------:|----------:|
+|                       EdgePreservingSmoothing | 4.540 s | 0.3456 s | 0.0897 s |  34.34 MB |
+|            EdgePreservingSmoothingWithFastPow | 1.428 s | 0.1243 s | 0.0323 s |  34.34 MB |
+| EdgePreservingSmoothingWithFastPowAndInlining | 1.400 s | 0.1307 s | 0.0339 s |  34.34 MB |
+
+
+|              Method |     Mean |    Error |   StdDev |        Gen0 |       Gen1 |      Gen2 |  Allocated |
+|-------------------- |---------:|---------:|---------:|------------:|-----------:|----------:|-----------:|
+|           MeanShift | 11.283 s | 1.4539 s | 0.0797 s | 619000.0000 | 70000.0000 | 7000.0000 | 3068.13 MB |
+| MeanShiftWithBuffer | 10.424 s | 5.5108 s | 0.3021 s |  98000.0000 | 37000.0000 | 6000.0000 |  676.82 MB |
+|  MeanShiftWithCache |  1.744 s | 0.4410 s | 0.0242 s |           - |          - |         - |     309 MB |
